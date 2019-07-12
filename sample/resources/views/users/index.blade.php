@@ -1,42 +1,54 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8" id="infinite-scroll">
-　　　　　　　　<!-- !=は等しくないという意味 -->
-            @if ($userDate != null)
+    <div class="container">
+        <div class="col-sm-offset-2 col-sm-8">
+          <h3>ユーザー一覧</h3>
 
-            <div class="card">
-                <div class="card-header">ユーザ一覧</div>
 
-                @foreach ($userDate as $user)
+            <!-- Following -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    All Users
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped task-table">
+                        <thead>
+                        <th>User</th>
+                        <th> </th>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td clphpass="table-text"><div>{{ $user->name }}</div></td>
+                                @if (auth()->user()->isFollowing($user->id))
+                                    <td>
+                                        <form action="{{route('unfollow', ['id' => $user->id])}}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
 
-                    <div class="card-body">
-                        {{$user->name}}
+                                            <button type="submit" id="delete-follow-{{ $user->id }}" class="btn btn-danger">
+                                                <i class="fa fa-btn fa-trash"></i>Unfollow
+                                            </button>
+                                        </form>
+                                    </td>
+                                @else
+                                    <td>
+                                        <form action="{{route('follow', ['id' => $user->id])}}" method="POST">
+                                            {{ csrf_field() }}
 
-                        
-                    </div>
-
-                    <hr>
-
-                @endforeach
-
-                {{ $userDate->links() }}
-
+                                            <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
+                                                <i class="fa fa-btn fa-user"></i>Follow
+                                            </button>
+                                        </form>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
-            @else
-
-            <div class="card">
-              <div class="card-body">
-                <h1>ユーザーはいません</h1>
-              </div>
-            </div>
-
-            @endif
-
         </div>
     </div>
-</div>
 @endsection

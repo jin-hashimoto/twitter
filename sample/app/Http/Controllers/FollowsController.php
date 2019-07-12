@@ -23,5 +23,13 @@ class FollowsController extends Controller
     $follow->delete();
 
     return redirect("/users/index");
-  }
+
+    public function select(){
+$followers = \DB::TwitterClone('followers')
+->select('followers.id as followers_id',)
+->leftJoin('users', 'followers.id', '=', 'users.id')
+->get();
+
+
+}
 }
