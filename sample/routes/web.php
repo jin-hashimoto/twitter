@@ -15,11 +15,15 @@ Route::get('/', 'PostsController@index')->name('top');
 Route::get('/home', 'HomeController@index')->name('home');
 // 投稿の作成、文字数制限、編集、アップデート、削除
 Route::resource('posts', 'PostsController', ['only' => ['create', 'store', 'show', 'edit', 'update', 'destroy']]);
+// comment
 Route::resource('comments', 'CommentsController', ['only' => ['store']]);
 Auth::routes();
-// ユーザーのリスト,フォロー、アンフォロー
+// Userlist,
 Route::group(['middleware' => 'auth'], function () {
     Route::get('users', 'UsersController@index')->name('users');
-    Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
-    Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+    // follow、
+    Route::put('/users/{user}/follow','UsersController@follow');
+    // unfollow
+    Route::put('/users/{user}/unfollow','UsersController@unfollow');
+
 });

@@ -21,11 +21,12 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td clphpass="table-text"><div>{{ $user->name }}</div></td>
-                                @if (auth()->user()->isFollowing($user->id))
+                                @if ($user->follow == 1)
                                     <td>
-                                        <form action="{{route('unfollow', ['id' => $user->id])}}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                        <form action="/users/{{$user->id}}/unfollow" method="POST">
+                                          
+                                            @csrf
+                                            @method('PUT')
 
                                             <button type="submit" id="delete-follow-{{ $user->id }}" class="btn btn-danger">
                                                 <i class="fa fa-btn fa-trash"></i>Unfollow
@@ -34,8 +35,10 @@
                                     </td>
                                 @else
                                     <td>
-                                        <form action="{{route('follow', ['id' => $user->id])}}" method="POST">
-                                            {{ csrf_field() }}
+                                        <form action="/users/{{$user->id}}/follow" method="POST">
+
+                                            @csrf
+                                            @method('PUT')
 
                                             <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
                                                 <i class="fa fa-btn fa-user"></i>Follow

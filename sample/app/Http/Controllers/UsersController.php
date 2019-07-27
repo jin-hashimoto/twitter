@@ -16,31 +16,28 @@ class UsersController extends Controller
 
       return view('users.index',compact('users'));
     }
-   
-   public function follow(User $user)
+
+   public function follow($user)
     {
-        $follower = auth()->user();
-        if ($follower->id == $user->id) {
+        $follower = Auth::user();
+        if ($follower->id == $user) {
             return back()->withError("You can't follow yourself");
+        }else{
+          $follow = ["follow" => 1];
+          User::where('id',$user)->update($follow);
         }
-        if(!$follower->isFollowing($user->id)) {
-            $follower->follow($user->id);
 
-            // sending a notification
-            $user->notify(new UserFollowed($follower));
-
-            return back()->withSuccess("You are now friends with {$user->name}");
-        }
-        return back()->withError("You are already following {$user->name}");
     }
 
-    public function unfollow(User $user)
+    public function unfollow($user)
     {
-        $follower = auth()->user();
-        if($follower->isFollowing($user->id)) {
-            $follower->unfollow($user->id);
-            return back()->withSuccess("You are no longer friends with {$user->name}");
-        }
-        return back()->withError("You are not following {$user->name}");
+      $follower = Auth::user();
+      if ($follower->id == $user) {
+          return back()->withError("You can't follow yourself");
+      }else{
+        $follow = ["follow" => 0];
+        User::where('id',$user)->update($follow);
     }
+
+  }
 }

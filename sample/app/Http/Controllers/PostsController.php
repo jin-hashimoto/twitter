@@ -46,6 +46,7 @@ public function edit($post_id)
 }
 
 public function update($post_id, Request $request)
+
 {
     $params = $request->validate([
         'title' => 'required|max:30',
