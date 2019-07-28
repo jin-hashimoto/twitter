@@ -2,21 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
-          <h3>ユーザー一覧</h3>
+       　<h3>ユーザーリスト</h3>
+        <div class="card mb-4">
+
 
 
             <!-- Following -->
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    All Users
-                </div>
+
                 <div class="panel-body">
                     <table class="table table-striped task-table">
-                        <thead>
-                        <th>User</th>
-                        <th> </th>
-                        </thead>
+
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
@@ -24,12 +20,12 @@
                                 @if ($user->follow == 1)
                                     <td>
                                         <form action="/users/{{$user->id}}/unfollow" method="POST">
-                                          
+
                                             @csrf
                                             @method('PUT')
 
                                             <button type="submit" id="delete-follow-{{ $user->id }}" class="btn btn-danger">
-                                                <i class="fa fa-btn fa-trash"></i>Unfollow
+                                                <i class="fa fa-btn fa-trash"></i>フォローをはずす
                                             </button>
                                         </form>
                                     </td>
@@ -41,7 +37,7 @@
                                             @method('PUT')
 
                                             <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
-                                                <i class="fa fa-btn fa-user"></i>Follow
+                                                <i class="fa fa-btn fa-user"></i>フォローする
                                             </button>
                                         </form>
                                     </td>

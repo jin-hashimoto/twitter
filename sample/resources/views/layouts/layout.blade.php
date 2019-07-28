@@ -17,6 +17,11 @@
                 Twitter
             </a>
             <div class="float-right">
+                <a href="{{ route('users') }}" class="btn btn-success">
+                    ユーザーリスト
+                </a>
+            </div>
+            <div class="float-right">
                 <a href="{{ route('posts.create') }}" class="btn btn-primary">
                     ツイートする
                 </a>

@@ -20,12 +20,13 @@ class UsersController extends Controller
    public function follow($user)
     {
         $follower = Auth::user();
-        if ($follower->id == $user) {
-            return back()->withError("You can't follow yourself");
-        }else{
+        // if ($follower->id == $user) {
+        //     return back()->withError("自分をフォローすることはできません");
+        // }else{
           $follow = ["follow" => 1];
           User::where('id',$user)->update($follow);
-        }
+        // }
+        return redirect()->route('users');
 
     }
 
@@ -33,11 +34,11 @@ class UsersController extends Controller
     {
       $follower = Auth::user();
       if ($follower->id == $user) {
-          return back()->withError("You can't follow yourself");
+          return back()->withError("自分をフォローすることはできません");
       }else{
         $follow = ["follow" => 0];
         User::where('id',$user)->update($follow);
     }
-
+      return redirect()->route('users');
   }
 }
