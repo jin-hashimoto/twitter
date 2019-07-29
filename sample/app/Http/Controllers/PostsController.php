@@ -11,6 +11,7 @@ class PostsController extends Controller
     {
         $posts = Post::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
         return view('posts.index', ['posts' => $posts]);
+
     }
     public function create()
 {

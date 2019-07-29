@@ -16,7 +16,7 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td clphpass="table-text"><div>{{ $user->name }}</div></td>
+                                <td clphpass="table-text"><div>{{ $user->name }} {{$user->id}}</div></td>
                                 @if ($user->follow == 1)
                                     <td>
                                         <form action="/users/{{$user->id}}/unfollow" method="POST">

@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="container mt-4">
-      <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
+<div style="background-color: #202020;">
+    <div class="container"　>
+      <form class="pb-1" method="POST" action="{{ route('comments.store') }}">
     @csrf
 
     <input
@@ -13,7 +14,7 @@
 
     <div class="form-group">
         <label for="body">
-            本文
+            <font color="white">本文
         </label>
 
         <textarea
@@ -40,7 +41,7 @@
     </a>
 </div>
 </form>
-        <div class="border p-4">
+        <div class="border p-4" >
             <h1 class="h5 mb-4">
                 {{ $post->title }}
             </h1>
@@ -50,8 +51,8 @@
             </p>
 
             <section>
-                <h2 class="h5 mb-4">
-                    コメント
+                <h2 class="h5 mb-4" >
+                     コメント
                 </h2>
 
                 @forelse($post->comments as $comment)
@@ -69,4 +70,5 @@
             </section>
         </div>
     </div>
+  </div>
 @endsection

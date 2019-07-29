@@ -18,14 +18,11 @@ class UsersController extends Controller
     }
 
    public function follow($user)
-    {
+    {  dd($user);
         $follower = Auth::user();
-        // if ($follower->id == $user) {
-        //     return back()->withError("自分をフォローすることはできません");
-        // }else{
           $follow = ["follow" => 1];
           User::where('id',$user)->update($follow);
-        // }
+
         return redirect()->route('users');
 
     }
@@ -33,12 +30,9 @@ class UsersController extends Controller
     public function unfollow($user)
     {
       $follower = Auth::user();
-      if ($follower->id == $user) {
-          return back()->withError("自分をフォローすることはできません");
-      }else{
         $follow = ["follow" => 0];
         User::where('id',$user)->update($follow);
-    }
+
       return redirect()->route('users');
   }
 }

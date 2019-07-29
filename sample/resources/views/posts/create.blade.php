@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <div class="border p-4">
             <h1 class="h5 mb-4">
-                ツイート新規作成
+                Tweet新規作成
             </h1>
 
             <form method="POST" action="{{ route('posts.store') }}">
@@ -56,7 +56,7 @@
                         </a>
 
                         <button type="submit" class="btn btn-primary">
-                            ツイートする
+                            Tweetする
                         </button>
                     </div>
                 </fieldset>

@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 @section('content')
-
-    <div class="container mt-4">
+<div style="background-color: #202020;">
+    <div class="container pt-5">
         @foreach ($posts as $post)
-            <div class="card mb-4">
-                <div class="card-header">
+            <div class="countainer mb-4"style="background-color: #d7d7d7; ">
+                <div class="card-header" >
                     {{ $post->title }}
                 </div>
                 <div class="card-body">
@@ -16,16 +16,17 @@
     詳細
 </a>
                 </div>
-                <div class="card-footer">
-                    <span class="float-right" style="color:gray;" >
+                <div class="card-footer text-right">
+                  @if ($post->comments->count())
+                      <span class="badge badge-primary">
+                          コメント {{ $post->comments->count() }}件
+                      </span>
+                  @endif
+                    <font color="gray">
                          {{ $post->created_at->format('Y.m.d.h:i') }}
-                    </span>
+                  </font>
 
-                    @if ($post->comments->count())
-                        <span class="badge badge-primary">
-                            コメント {{ $post->comments->count() }}件
-                        </span>
-                    @endif
+
                 </div>
             </div>
         @endforeach
@@ -33,4 +34,5 @@
             {{ $posts->links() }}
         </div>
     </div>
+</div>
 @endsection
