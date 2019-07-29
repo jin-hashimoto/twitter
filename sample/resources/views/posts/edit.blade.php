@@ -56,19 +56,20 @@
                         <button type="submit" class="btn btn-primary">
                             更新する
                         </button>
+                        <form
+                                    style="display: inline-block;"
+                                    method="POST"
+                                    action="{{ route('posts.destroy', ['post' => $post]) }}"
+                                    >
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger float-li">削除する</button>
+                        </form>
                     </div>
                 </fieldset>
             </form>
-            <form
-                        style="display: inline-block;"
-                        method="POST"
-                        action="{{ route('posts.destroy', ['post' => $post]) }}"
-                        >
-                        @csrf
-                        @method('DELETE')
 
-                        <button class="btn btn-danger float-li">削除する</button>
-            </form>
         </div>
     </div>
 @endsection

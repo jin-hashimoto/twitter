@@ -1,8 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div style="background-color: #202020;">
-    <div class="container"　>
+    <div class="container pt-4"　>
       <form class="pb-1" method="POST" action="{{ route('comments.store') }}">
     @csrf
 
@@ -14,7 +13,7 @@
 
     <div class="form-group">
         <label for="body">
-            <font color="white">本文
+            <font color="black">本文
         </label>
 
         <textarea
@@ -30,14 +29,12 @@
         @endif
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4 mb-4 text-right">
         <button type="submit" class="btn btn-primary">
-            リプライする
+         Reply
         </button>
-    </div>
-    <div class="mb-4 text-right">
     <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">
-        編集する
+         Edit
     </a>
 </div>
 </form>

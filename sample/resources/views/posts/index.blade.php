@@ -1,9 +1,8 @@
 @extends('layouts.layout')
 @section('content')
-<div style="background-color: #202020;">
-    <div class="container pt-5">
+    <div class="container mt-5">
         @foreach ($posts as $post)
-            <div class="countainer mb-4"style="background-color: #d7d7d7; ">
+            <div class="countainer mb-4"style="background-color: #f0f8ff; ">
                 <div class="card-header" >
                     {{ $post->title }}
                 </div>

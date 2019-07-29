@@ -18,7 +18,7 @@ class UsersController extends Controller
     }
 
    public function follow($user)
-    {  dd($user);
+    {
         $follower = Auth::user();
           $follow = ["follow" => 1];
           User::where('id',$user)->update($follow);
