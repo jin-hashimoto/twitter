@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     <div class="container mt-5">
-       <div class="row justify-content-center">
-         <div class="col-md-5">
+       <div class="row justify-content-center " >
+         <div class="col-md-7">
         @foreach ($posts as $post)
             <div class="countainer mb-4"style="background-color: #f0f8ff; ">
                 <!-- <div class="card-header" >
