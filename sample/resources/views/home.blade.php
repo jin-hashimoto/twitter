@@ -4,9 +4,9 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xs-8">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+              
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,20 +15,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    ログイン完了です！！！！
                 </div>
-                <span class="container mb-4">
-                  <span class="p-2">
-                  <a class="btn btn-primary" href="{{ url('') }}">
-                    Home
-                  </a>
-                </span>
-                  <span class="p-2">
-                    <a href="{{ route('users') }}" class="btn btn-primary">
-                      User list
-                    </a>
-                  </spacing>
-              </span>
+
             </div>
         </div>
     </div>
