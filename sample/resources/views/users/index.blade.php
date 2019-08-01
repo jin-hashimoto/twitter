@@ -8,10 +8,10 @@
 
 
             <!-- Following -->
-            <div class="panel panel-default">
+            <div class="panel panel-default ">
 
                 <div class="panel-body">
-                    <table class="table table-striped task-table">
+                    <table class="table  task-table">
 
                         <tbody>
                         @foreach ($users as $user)

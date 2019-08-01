@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class PostsController extends Controller
@@ -10,7 +11,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
-        return view('posts.index', ['posts' => $posts]);
+        
+        return view('posts.index', ['posts' => $posts,]);
 
     }
     public function create()
@@ -20,10 +22,13 @@ class PostsController extends Controller
 
 public function store(Request $request)
 {
-    $params = $request->validate([
-        'title' => 'required|max:30',
-        'body' => 'required|max:140',
-    ]);
+  $params = $request->validate([
+      'title' => 'required|max:30',
+      'body' => 'required|max:140',
+
+  ]);
+
+
 
     Post::create($params);
 

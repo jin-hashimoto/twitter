@@ -15,7 +15,7 @@
 
         <div class="container-fluid">
           <a class="mr-auto p-2" href="{{ url('') }}">
-              Twitter
+            Home
           </a>
             <div class="p-2">
                 <a href="{{ route('users') }}" class="navbar-brand">
@@ -28,5 +28,7 @@
                 </a>
             </div>
         </div>
-    </header><div>@yield('content')</div></body>
+    </header>
+   <div>@yield('content')</div>
+</body>
 </html>

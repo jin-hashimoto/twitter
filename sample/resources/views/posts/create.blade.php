@@ -11,7 +11,7 @@
                 @csrf
 
                 <fieldset class="mb-4">
-                    <div class="form-group">
+                    <div class="forms-group">
                         <label for="title">
                             投稿者
                         </label>
@@ -29,7 +29,6 @@
                             </div>
                         @endif
                     </div>
-
                     <div class="form-group">
                         <label for="body">
                             本文
